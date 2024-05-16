@@ -74,6 +74,7 @@
             padding: 1rem;
             overflow: hidden; /* Oculta el contenido al inicio */
             transition: max-height 0.3s ease; /* Animación de expansión */
+            font-family: 'Freeman', sans-serif;
             
            
         }
@@ -86,6 +87,7 @@
         .collapsible p {
             font-size: 0.9rem;
             color: #777;
+
         }
 
          /* bloques internos */
@@ -269,45 +271,17 @@
 
       <!-- Comienzo de Bloque 1  -->
             <div class="collapsible">
-                        <!-- Proyecto 1.1-->
-                    <div class="bloques">
-                        <h2>Proyecto 1</h2>
-                        <p>Barrio Lomas de Tafi - Tucuman.</p>
-                        <div class="reel">
-                            <a href="https://romanoaguero.github.io/PVDU_Demo1/#15/-26.7768/-65.2332" target="_blank">
-                                <img src="images/Visor_Lomas.png" alt="Proyecto 1">
-                            </a>
-                        </div>
-                                <!-- Boton 1.1-->
-                    <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Ver más</button>
-                    
-                                  <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
-                                        BARRIO LOMAS DE TAFI:
-                                        <li> Parcelarios. </li>
-                                        <li> Uso de espacios Publico.</li>
-                                        <li> Lineas de Colectivos.</li>
-                                        <li> Espacios Usurpados. </li>
-                                        <li> Espacios verde e Infra Verde.</li>
-                                    </div>
-                                  </div>   
                                   
-                                  <!-- FIN Boton -->
-
-                </div>
-
-            
-                         <!-- Proyecto 1.2-->
+                         <!-- Proyecto 1.1-->
                     <div class="bloques">
-                        <h2>Proyecto 2</h2>
-                        <p>Gran San Miguel de Tucuman - Obras.</p>
+                        <h2> GRAN SAN MIGUEL DE TUCUMAN </h2>
+                        <p>Actualizado:16/05/2024</p>
                         <div class="reel">
                             <a href="https://romanoaguero.github.io/IPVDU_GSMT/#13/-26.8198/-65.2123" target="_blank">
                                 <img src="images/GSMT_Visor.png" alt="Proyecto 1">
                             </a>
                         </div>
-                        <!-- Boton 1.2-->
+                        <!-- Boton 1.1-->
                     <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Ver más</button>
                     
@@ -327,11 +301,41 @@
                                   
                                   <!-- FIN Boton -->
                     </div>
+                    <!-- FIN PROYECTO -->
                     
+                    <!-- Proyecto 1.2-->
+                    <div class="bloques">
+                        <h2>BARRIO LOMAS DE TAFI 1</h2>
+                        <p>Actualizado:16/05/2024</p>
+                        <div class="reel">
+                            <a href="https://romanoaguero.github.io/PVDU_Demo1/#15/-26.7768/-65.2332" target="_blank">
+                                <img src="images/Visor_Lomas.png" alt="Proyecto 1">
+                            </a>
+                        </div>
+                                <!-- Boton 1.2-->
+                    <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Ver más</button>
+                    
+                                  <div class="collapse" id="collapseExample">
+                                    <div class="card card-body">
+                                        BARRIO LOMAS DE TAFI:
+                                        <li> Parcelarios. </li>
+                                        <li> Uso de espacios Publico.</li>
+                                        <li> Lineas de Colectivos.</li>
+                                        <li> Espacios Usurpados. </li>
+                                        <li> Espacios verde e Infra Verde.</li>
+                                    </div>
+                                  </div>   
+                                  
+                                  <!-- FIN Boton -->
+
+                </div>
+                <!-- FIN proyecto -->
+
                             <!-- Proyecto 1.3-->
                     <div class="bloques">
-                        <h2>Proyecto 3</h2>
-                        <p>Asentamiento - Lomas de Tafi.</p>
+                        <h2>BARRIO LOMAS DE TAFI 2</h2>
+                        <p>Actualizado:16/05/2024</p>
                         <div class="reel">
                             <a href="https://romanoaguero.github.io/Lomas_Usurpaciones/" target="_blank">
                                 <img src="images/Usurpaciones.png" alt="Proyecto 1">
@@ -352,7 +356,9 @@
                                   
                                   <!-- FIN Boton -->
                     </div>
-                </div>
+                <!-- FIN PROYECTO-->
+
+           </div>
                 <!-- FIN Bloque 1  -->
               
             </div>
@@ -554,7 +560,12 @@
 
         swal({
             title: "Ingrese la contraseña:",
-            content: "input",
+            content: {
+                element: "input",
+                attributes: {
+                    type: "password", // Cambia el tipo de entrada a contraseña
+                },
+            },
             buttons: {
                 cancel: true,
                 confirm: {
@@ -590,6 +601,5 @@
     // Inicia la primera ventana emergente
     mostrarVentanaEmergente();
 </script>
-
 
 </html>
