@@ -420,11 +420,11 @@
                     
                             <!-- Proyecto 2.3-->
                     <div class="bloques">
-                        <h2>Proyecto 3</h2>
-                        <p>Descripción breve del proyecto.</p>
+                        <h2>Lomas de Tafi - Actividades URBANAS</h2>
+                        <p>Actualizdo 05/08/2024.</p>
                         <div class="reel">
-                            <a href="https://www.ejemplo1.com" target="_blank">
-                                <img src="https://via.placeholder.com/300" alt="Proyecto 1">
+                            <a href="https://romanoaguero.github.io/ActividadesUrbanas/" target="_blank">
+                                <img src="images/Visor_Comercio.png" alt="Proyecto 1">
                             </a>
                         </div>
                         <!-- Boton 2.1-->
@@ -433,7 +433,7 @@
                     
                                   <div class="collapse" id="collapseExample">
                                     <div class="card card-body">
-                                      Este es un contenido de ejemplo para el componente colapsable. Está oculto por defecto y se muestra cuando se activa.
+                                      Actividades URBANAS clasificadas y Georreferenciada - Lomas de Tafi
                                     </div>
                                   </div>   
                                   
@@ -546,61 +546,6 @@
 </body>
 
 
-<!-- Script de la ventana emergente -->
-
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script>
-    let autenticado = false; // Variable de control para rastrear la autenticación
-
-    function mostrarVentanaEmergente() {
-        if (autenticado) {
-            // Si ya está autenticado, no mostrar la ventana emergente
-            return;
-        }
-
-        swal({
-            title: "Ingrese la contraseña:",
-            content: {
-                element: "input",
-                attributes: {
-                    type: "password", // Cambia el tipo de entrada a contraseña
-                },
-            },
-            buttons: {
-                cancel: true,
-                confirm: {
-                    text: "Acceder",
-                    closeModal: false,
-                },
-            },
-        }).then((value) => {
-            if (value === "planeamiento2024") {
-                autenticado = true; // Marcar como autenticado
-                swal("Contraseña correcta...", "", "success");
-                // Desactiva el evento de la ventana emergente
-                document.removeEventListener("mousedown", handleMouseDown);
-            } else {
-                swal("Contraseña incorrecta.", "", "error").then(() => {
-                    // Vuelve a mostrar la ventana emergente
-                    mostrarVentanaEmergente();
-                });
-            }
-        });
-
-        // Agrega un escuchador de eventos para evitar que se cierre al hacer clic fuera de la ventana emergente
-        document.addEventListener("mousedown", handleMouseDown);
-    }
-
-    function handleMouseDown(event) {
-        const modal = document.querySelector(".swal-modal");
-        if (modal && !modal.contains(event.target)) {
-            event.stopPropagation();
-        }
-    }
-
-    // Inicia la primera ventana emergente
-    mostrarVentanaEmergente();
 </script>
 
 </html>
-
