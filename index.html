@@ -12,9 +12,8 @@
     
     <!-- Se agrega titulo e favicon -->
     <link rel="shortcut icon" href="images/favicon.png">
-    <title>GIS - IPVDU - Planeamento  </title>
-        <style>
-        
+    <title>GIS - IPVDU - Planeamento</title>
+    <style>
         /* Estilos generales */
         body {
             font-family: Arial, sans-serif;
@@ -23,12 +22,17 @@
             margin: 0;
             padding: 0;
         }
+        
         /* Encabezado */
         header {
-            background: linear-gradient(to right,#00BFFF, #0074D9 );
+            background: linear-gradient(to right, #00BFFF, #0074D9);
             color: #fff;
-            
+            display: flex;
+            justify-content: flex-start; /* Cambiado a flex-start para alinear a la izquierda */
+            align-items: center;
+            padding: 1rem 2rem;
         }
+        
         h1 {
             font-size: 2rem;
             margin: 0;
@@ -39,10 +43,11 @@
             background-color: #00549F;
             padding: 10px;
             border-radius: 10px;
-            margin: 2rem 2rem 1rem 2rem;
+            margin: 1.5rem 1rem;
             padding: 1rem;
             font-size: 20px;
         }
+        
         nav ul {
             list-style: none;
             padding: 0;
@@ -50,97 +55,102 @@
             display: flex;
             justify-content: center;
             color: #ffffff;
-
-           
-            
         }
+        
         nav li {
             margin-right: 20px;
         }
+        
         nav a {
             color: #ffffff;
             text-decoration: none;
         }
 
-        /* Contenedor desplegable */
+        /* Contenedor desplegable con grid responsivo */
         .collapsible {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Divide en 3 columnas iguales */
-            gap: 20px; /* Espacio entre columnas */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             margin: 1rem;
             padding: 1rem;
-            overflow: hidden; /* Oculta el contenido al inicio */
-            transition: max-height 0.3s ease; /* Animación de expansión */
+            overflow: hidden;
+            transition: max-height 0.3s ease;
             font-family: 'Freeman', sans-serif;
-            
-           
+            width: calc(100% - 2rem); /* Asegura que el ancho no exceda el contenedor padre */
         }
-
 
         .collapsible h2 {
             font-size: 1.25rem;
             margin: 0;
         }
+        
         .collapsible p {
             font-size: 0.9rem;
             color: #777;
-
         }
 
-         /* bloques internos */
-         .bloques {
-            background-color: rgba(130, 188, 190, 0.42); 
-           
+        /* bloques internos */
+        .bloques {
+            background-color: rgba(130, 188, 190, 0.42);
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin: 1rem;
+            margin: 0.5rem;
             padding: 1rem;
-            overflow: hidden; /* Oculta el contenido al inicio */
-            transition: max-height 0.3s ease; /* Animación de expansión */
-            grid-template-columns: 30% 1fr; /* El primer 30% es para el bloque, el resto se ajusta automáticamente */
-            gap: 20px; /* Espacio entre columnas */
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
+        
+        .bloques:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
         .bloques h2 {
             font-size: 1.25rem;
             margin: 0;
+            color: #00549F;
         }
+        
         .bloques p {
             font-size: 0.9rem;
-            color: #777;
+            color: #555;
+            margin-bottom: 1rem;
         }
-
-
 
         /* Reel animado */
         .reel {
-            display: flex;
             overflow: hidden;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            flex-grow: 1;
         }
+        
         .reel img {
             width: 100%;
             height: auto;
             transition: transform 0.5s ease;
+            object-fit: cover;
+            display: block;
         }
+        
         .reel:hover img {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
-      
-
 
         /* Pie de página */
         footer {
-            background: linear-gradient(to right,#0074D9,#00BFFF );
+            background: linear-gradient(to right, #0074D9, #00BFFF);
             color: #fff;
             text-align: left;
             padding: 1rem 2rem;
             font-size: 14px;
         }
-        
-
-
 
         /* Estilo del botón para expandir/cerrar */
         .collapsible-button {
@@ -151,65 +161,72 @@
             padding: 0.5rem 1rem;
             font-size: 0.9rem;
             border-radius: 5px;
-            margin-top: 1rem;
+            margin-top: auto;
+            transition: background-color 0.3s ease;
+            align-self: flex-start;
         }
+        
+        .collapsible-button:hover {
+            background-color: #2980B9;
+        }
+        
         .collapsible-button:focus {
             outline: none;
         }
+        
         /* Estado inicial del contenido oculto */
         .collapsible-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
         }
+        
         /* Estado visible del contenido al hacer clic */
         .collapsible.open .collapsible-content {
-            max-height: 1000px; /* Ajusta según tu necesidad */
+            max-height: 1000px;
         }
-            /* Acordion Item */
         
+        /* Acordion Item */
         .accordion-flush {
-            margin-bottom: 20px;
-            margin: 1rem;
-            padding: 1rem;
+            margin: 0 1rem 1rem 1rem;
         }
 
         /* cuerpo de acordeon */
         .accordion-body {
             background-color: #ccccccea;
+            padding: 1.5rem;
+            padding-bottom: 2.5rem;
         }
 
         .circle-number {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             width: 30px;
             height: 30px;
             border-radius: 50%;
             background-color: #007bff;
             color: #fff;
-            text-align: center;
-            line-height: 30px;
             font-size: 14px;
+            margin-right: 10px;
         }
 
-        .titulo-bloques
-        {
-            margin-left: 20px;
+        .titulo-bloques {
             font-weight: bold;
-            color: #494848
+            color: #494848;
         }
 
         .img-derecha {
             height: auto;
-            width: 50%;
-            padding-left:1rem;
+            width: auto;
+            max-width: 600px;
+            max-height: 80px;
+            padding: 0.5rem 0;
         }
 
-
-        /*  nav color  */
-
+        /* nav color */
         .btn-grad {
-            background-image: linear-gradient(to right, #00549F 0%, #004e92  51%, #000428  100%);
-            
+            background-image: linear-gradient(to right, #00549F 0%, #004e92 51%, #000428 100%);
             margin: 10px;
             padding: 15px 45px;
             text-align: center;
@@ -220,332 +237,394 @@
             box-shadow: 0 0 20px #eee;
             border-radius: 10px;
             display: block;
-            
-          }
+        }
 
-          .btn-grad:hover {
-            background-position: right center; /* change the direction of the change here */
+        .btn-grad:hover {
+            background-position: right center;
             color: #fff;
             text-decoration: none;
-          }
+        }
           
-          .letra {
+        .letra {
             font-family: 'Freeman', sans-serif;
-            font-weight: 470; /* Regular */
-                }
+            font-weight: 470;
+        }
             
-                .card {
-                    font-family: 'Freeman', sans-serif;
-                    margin:1rem;
-                    font-size: 15px;
-
-                }
-
-
-
+        .card {
+            font-family: 'Freeman', sans-serif;
+            margin: 1rem 0;
+            font-size: 15px;
+        }
+        
+        /* Media Queries para Responsividad */
+        @media (max-width: 992px) {
+            .collapsible {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            
+            .img-derecha {
+                max-width: 600px;
+            }
+            
+            nav {
+                margin: 1rem 0.5rem;
+                padding: 0.8rem;
+                font-size: 16px;
+            }
+            
+            .letra {
+                font-size: 16px;
+            }
+            
+            .accordion-flush {
+                margin: 0 0.5rem 0.5rem 0.5rem;
+            }
+            
+            .circle-number {
+                width: 25px;
+                height: 25px;
+                font-size: 12px;
+            }
+            
+            .titulo-bloques {
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .collapsible {
+                grid-template-columns: 1fr; /* Una sola columna en pantallas pequeñas */
+                margin: 0.5rem;
+                padding: 0.5rem;
+                gap: 10px; /* Reducir el espacio entre elementos */
+            }
+            
+            .bloques {
+                margin: 0.25rem 0;
+                padding: 0.75rem;
+            }
+            
+            .accordion-body {
+                padding: 1rem 0.5rem;
+            }
+            
+            .img-derecha {
+                width: auto;
+                max-width: 600px;
+            }
+            
+            nav {
+                margin: 0.5rem;
+                padding: 0.5rem;
+                font-size: 14px;
+            }
+            
+            footer {
+                padding: 0.8rem 1rem;
+                font-size: 12px;
+            }
+            
+            .collapsible-button {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+            
+            .bloques h2 {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* Media query adicional para pantallas muy pequeñas */
+        @media (max-width: 380px) {
+            .collapsible {
+                padding: 0.25rem;
+                margin: 0.25rem;
+            }
+            
+            .accordion-body {
+                padding: 0.5rem 0.25rem;
+            }
+            
+            .bloques {
+                padding: 0.5rem;
+            }
+            
+            .img-derecha {
+                max-width: 600px;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <img src="images/BANNER.png" alt="Imagen a la derecha" class="img-derecha">
-        
-
+        <img src="images/BANNER.png" alt="Banner IPVDU" class="img-derecha">
     </header>
       
     <nav class="btn-grad">
-            <ul>
-                <b class="letra"> REPOSITORIO - SISTEMA DE INFORMACION GEOGRAFICA </b>
-            </ul>
-        </nav>
+        <ul>
+            <b class="letra">REPOSITORIO - SISTEMA DE INFORMACION GEOGRAFICA</b>
+        </ul>
+    </nav>
 
-        <!-- Comienzo de ACORDEON -->
-        <div class="accordion accordion-flush" id="accordionFlushExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingOne">
+    <!-- Comienzo de ACORDEON -->
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                    <span class="circle-number">1</span>  <span class="titulo-bloques"> Proyecto de visores GIS #1 </span>
+                    <span class="circle-number">1</span><span class="titulo-bloques">Proyecto de visores GIS #1</span>
                 </button>
-              </h2>
-              <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
-
-      <!-- Comienzo de Bloque 1  -->
-            <div class="collapsible">
-                                  
-                         <!-- Proyecto 1.1-->
-                    <div class="bloques">
-                        <h2> GRAN SAN MIGUEL DE TUCUMAN </h2>
-                        <p>Actualizado:16/05/2024</p>
-                        <div class="reel">
-                            <a href="https://romanoaguero.github.io/IPVDU_GSMT/#13/-26.8198/-65.2123" target="_blank">
-                                <img src="images/GSMT_Visor.png" alt="Proyecto 1">
-                            </a>
+                    <!-- Comienzo de Bloque 1 -->
+                    <div class="collapsible">
+                        <!-- Proyecto 1.1 -->
+                        <div class="bloques">
+                            <h2>GRAN SAN MIGUEL DE TUCUMAN</h2>
+                            <p>Actualizado: 16/05/2024</p>
+                            <div class="reel">
+                                <a href="https://romanoaguero.github.io/IPVDU_GSMT/#13/-26.8198/-65.2123" target="_blank">
+                                    <img src="images/GSMT_Visor.png" alt="Visor GSMT">
+                                </a>
+                            </div>
+                            <!-- Botón 1.1 -->
+                            <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGSMT" aria-expanded="false" aria-controls="collapseGSMT">
+                                Ver más
+                            </button>
+                            <div class="collapse" id="collapseGSMT">
+                                <div class="card card-body">
+                                    GRAN SAN MIGUEL DE TUCUMAN:
+                                    <ul>
+                                        <li>Obras IPVDU Tucuman.</li>
+                                        <li>Lineas de Colectivos Rurales.</li>
+                                        <li>Pasivos Ambientales.</li>
+                                        <li>Comodatos.</li>
+                                        <li>Reservas IPVDU.</li>
+                                        <li>Infra Verde & Esp Verdes.</li>
+                                        <li>Banco de Tierra.</li>
+                                        <li>RENABAP.</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <!-- Boton 1.1-->
-                    <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Ver más</button>
-                    
-                                  <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
-                                        GRAN SAN MIGUEL DE TUCUMAN:
-                                        <li> Obras IPVDU Tucuman. </li>
-                                        <li> Lineas de Colectivos Rurales.</li>
-                                        <li> Pasivos Ambientales.</li>
-                                        <li> Comodatos. </li>
-                                        <li> Reservas IPVDU.</li>
-                                        <li> Infra Verde & Esp Verdes.</li>
-                                        <li> Banco de Tierra.</li>
-                                        <li> RENABAP.</li>
-                                    </div>
-                                  </div>   
-                                  
-                                  <!-- FIN Boton -->
+                        
+                        <!-- Proyecto 1.2 -->
+                        <div class="bloques">
+                            <h2>BARRIO LOMAS DE TAFI 1</h2>
+                            <p>Actualizado: 16/05/2024</p>
+                            <div class="reel">
+                                <a href="https://romanoaguero.github.io/PVDU_Demo1/#15/-26.7768/-65.2332" target="_blank">
+                                    <img src="images/Visor_Lomas.png" alt="Visor Lomas de Tafi">
+                                </a>
+                            </div>
+                            <!-- Botón 1.2 -->
+                            <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLomas1" aria-expanded="false" aria-controls="collapseLomas1">
+                                Ver más
+                            </button>
+                            <div class="collapse" id="collapseLomas1">
+                                <div class="card card-body">
+                                    BARRIO LOMAS DE TAFI:
+                                    <ul>
+                                        <li>Parcelarios.</li>
+                                        <li>Uso de espacios Publico.</li>
+                                        <li>Lineas de Colectivos.</li>
+                                        <li>Espacios Usurpados.</li>
+                                        <li>Espacios verde e Infra Verde.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Proyecto 1.3 -->
+                        <div class="bloques">
+                            <h2>BARRIO LOMAS DE TAFI 2</h2>
+                            <p>Actualizado: 16/05/2024</p>
+                            <div class="reel">
+                                <a href="https://romanoaguero.github.io/Lomas_Usurpaciones/" target="_blank">
+                                    <img src="images/Usurpaciones.png" alt="Visor Usurpaciones">
+                                </a>
+                            </div>
+                            <!-- Botón 1.3 -->
+                            <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLomas2" aria-expanded="false" aria-controls="collapseLomas2">
+                                Ver más
+                            </button>
+                            <div class="collapse" id="collapseLomas2">
+                                <div class="card card-body">
+                                    DUPLEX LOMAS DE TAFI:
+                                    <ul>
+                                        <li>Lotes sin Usurpaciones.</li>
+                                        <li>Usurpaciones sin Expediente.</li>
+                                        <li>Usurpaciones con Expediente.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- FIN PROYECTO -->
-                    
-                    <!-- Proyecto 1.2-->
-                    <div class="bloques">
-                        <h2>BARRIO LOMAS DE TAFI 1</h2>
-                        <p>Actualizado:16/05/2024</p>
-                        <div class="reel">
-                            <a href="https://romanoaguero.github.io/PVDU_Demo1/#15/-26.7768/-65.2332" target="_blank">
-                                <img src="images/Visor_Lomas.png" alt="Proyecto 1">
-                            </a>
-                        </div>
-                                <!-- Boton 1.2-->
-                    <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Ver más</button>
-                    
-                                  <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
-                                        BARRIO LOMAS DE TAFI:
-                                        <li> Parcelarios. </li>
-                                        <li> Uso de espacios Publico.</li>
-                                        <li> Lineas de Colectivos.</li>
-                                        <li> Espacios Usurpados. </li>
-                                        <li> Espacios verde e Infra Verde.</li>
-                                    </div>
-                                  </div>   
-                                  
-                                  <!-- FIN Boton -->
-
+                    <!-- FIN Bloque 1 -->
                 </div>
-                <!-- FIN proyecto -->
-
-                            <!-- Proyecto 1.3-->
-                    <div class="bloques">
-                        <h2>BARRIO LOMAS DE TAFI 2</h2>
-                        <p>Actualizado:16/05/2024</p>
-                        <div class="reel">
-                            <a href="https://romanoaguero.github.io/Lomas_Usurpaciones/" target="_blank">
-                                <img src="images/Usurpaciones.png" alt="Proyecto 1">
-                            </a>
-                        </div>
-                        <!-- Boton 1.3-->
-                    <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Ver más</button>
-                    
-                                  <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
-                                        DUPLEX LOMAS DE TAFI:
-                                        <li> Lotes sin Usurpaciones. </li>
-                                        <li> Usurpaciones sin Expediente.</li>
-                                        <li> Usurpaciones con Expediente.</li>
-                                    </div>
-                                  </div>   
-                                  
-                                  <!-- FIN Boton -->
-                    </div>
-                <!-- FIN PROYECTO-->
-
-           </div>
-                <!-- FIN Bloque 1  -->
-              
             </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingTwo">
+        </div>
+        
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTwo">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                    <span class="circle-number">2</span>  <span class="titulo-bloques"> Proyecto de visores GIS #2 </span>
+                    <span class="circle-number">2</span><span class="titulo-bloques">Proyecto de visores GIS #2</span>
                 </button>
-              </h2>
-              <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
-
-            <!-- Comienzo de Bloque 2  -->
+                    <!-- Comienzo de Bloque 2 -->
                     <div class="collapsible">
-                        <!-- Proyecto 2.1-->
-                    <div class="bloques">
-                        <h2>Lomas de Tafi - Parcelas UECEL</h2>
-                        <p>Actualizado 30/07/2024</p>
-                        <div class="reel">
-                            <a href="https://romanoaguero.github.io/TerrenosLomas/#15/-26.7760/-65.2367"  target="_blank">
-                                <img src="images/visor_terrenos.png" alt="Proyecto 1">
-                            </a>
+                        <!-- Proyecto 2.1 -->
+                        <div class="bloques">
+                            <h2>Lomas de Tafi - Parcelas UECEL</h2>
+                            <p>Actualizado: 30/07/2024</p>
+                            <div class="reel">
+                                <a href="https://romanoaguero.github.io/TerrenosLomas/#15/-26.7760/-65.2367" target="_blank">
+                                    <img src="images/visor_terrenos.png" alt="Visor Terrenos">
+                                </a>
+                            </div>
+                            <!-- Botón 2.1 -->
+                            <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTerrenos" aria-expanded="false" aria-controls="collapseTerrenos">
+                                Ver más
+                            </button>
+                            <div class="collapse" id="collapseTerrenos">
+                                <div class="card card-body">
+                                    Terrenos - Parcelarios Lomas de Tafi
+                                </div>
+                            </div>
                         </div>
-                       <!-- Boton 2.1-->
-                    <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Ver más</button>
-                    
-                                  <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
-                                        Terrenos - Parcelarios Lomas de Tafi
-                                    </div>
-                                  </div>   
-                                  
-                                  <!-- FIN Boton -->
-                    </div>
             
-                         <!-- Proyecto 2.2-->
-                    <div class="bloques">
-                        <h2>Encuestas GEO espacio Verde</h2>
-                        <p>Actualizado 30/07/2024.</p>
-                        <div class="reel">
-                            <a href="https://romanoaguero.github.io/EncuestaVerde/" target="_blank">
-                                <img src="images/Encuesta.png" alt="Proyecto 1">
-                            </a>
+                        <!-- Proyecto 2.2 -->
+                        <div class="bloques">
+                            <h2>Encuestas GEO espacio Verde</h2>
+                            <p>Actualizado: 30/07/2024</p>
+                            <div class="reel">
+                                <a href="https://romanoaguero.github.io/EncuestaVerde/" target="_blank">
+                                    <img src="images/Encuesta.png" alt="Encuesta Verde">
+                                </a>
+                            </div>
+                            <!-- Botón 2.2 -->
+                            <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEncuesta" aria-expanded="false" aria-controls="collapseEncuesta">
+                                Ver más
+                            </button>
+                            <div class="collapse" id="collapseEncuesta">
+                                <div class="card card-body">
+                                    Encuesta Georefenciando espacios verdes San Miguel de Tucumán
+                                </div>
+                            </div>
                         </div>
-                        <!-- Boton 2.-->
-                    <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Ver más</button>
                     
-                                  <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
-                                      Encuesta Georefenciando espacios verdes San Miguel de tucuman
-                                    </div>
-                                  </div>   
-                                  
-                                  <!-- FIN Boton -->
-                    </div>
-                    
-                            <!-- Proyecto 2.3-->
-                    <div class="bloques">
-                        <h2>Lomas de Tafi - Actividades URBANAS</h2>
-                        <p>Actualizdo 05/08/2024.</p>
-                        <div class="reel">
-                            <a href="https://romanoaguero.github.io/ActividadesUrbanas/" target="_blank">
-                                <img src="images/Visor_Comercio.png" alt="Proyecto 1">
-                            </a>
+                        <!-- Proyecto 2.3 -->
+                        <div class="bloques">
+                            <h2>Lomas de Tafi - Actividades URBANAS</h2>
+                            <p>Actualizado: 05/08/2024</p>
+                            <div class="reel">
+                                <a href="https://romanoaguero.github.io/ActividadesUrbanas/" target="_blank">
+                                    <img src="images/Visor_Comercio.png" alt="Visor Comercio">
+                                </a>
+                            </div>
+                            <!-- Botón 2.3 -->
+                            <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseActividades" aria-expanded="false" aria-controls="collapseActividades">
+                                Ver más
+                            </button>
+                            <div class="collapse" id="collapseActividades">
+                                <div class="card card-body">
+                                    Actividades URBANAS clasificadas y Georreferenciada - Lomas de Tafi
+                                </div>
+                            </div>
                         </div>
-                        <!-- Boton 2.1-->
-                    <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Ver más</button>
-                    
-                                  <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
-                                      Actividades URBANAS clasificadas y Georreferenciada - Lomas de Tafi
-                                    </div>
-                                  </div>   
-                                  
-                                  <!-- FIN Boton -->
                     </div>
+                    <!-- FIN Bloque 2 -->
                 </div>
-                <!-- FIN Bloque 2  -->
-
-                </div>
-              </div>
-
-
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                    <!-- numero item -->
-                    <span class="circle-number">3</span>  <span class="titulo-bloques"> Proyecto de visores GIS #3 </span>
-                </button>
-              </h2>
-              <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">
-
-                        <!-- Comienzo de Bloque 3  -->
-                    <div class="collapsible">
-                        <!-- Proyecto 3.1-->
-                    <div class="bloques">
-                        <h2>Proyecto 2</h2>
-                        <p>Descripción breve del proyecto.</p>
-                        <div class="reel">
-                            <a href="https://www.ejemplo1.com" target="_blank">
-                                <img src="https://via.placeholder.com/300" alt="Proyecto 1">
-                            </a>
-                        </div>
-                        <!-- Boton 3.1-->
-                    <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Ver más</button>
-                    
-                                  <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
-                                      Este es un contenido de ejemplo para el componente colapsable. Está oculto por defecto y se muestra cuando se activa.
-                                    </div>
-                                  </div>   
-                                  
-                                  <!-- FIN Boton -->
-                    </div>
-            
-                         <!-- Proyecto 3.2-->
-                    <div class="bloques">
-                        <h2>Proyecto 2</h2>
-                        <p>Descripción breve del proyecto.</p>
-                        <div class="reel">
-                            <a href="https://www.ejemplo1.com" target="_blank">
-                                <img src="https://via.placeholder.com/300" alt="Proyecto 1">
-                            </a>
-                        </div>
-                        <!-- Boton 3.2-->
-                    <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Ver más</button>
-                    
-                                  <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
-                                      Este es un contenido de ejemplo para el componente colapsable. Está oculto por defecto y se muestra cuando se activa.
-                                    </div>
-                                  </div>   
-                                  
-                                  <!-- FIN Boton -->
-                    </div>
-                    
-                            <!-- Proyecto 3.3-->
-                    <div class="bloques">
-                        <h2>Proyecto 3</h2>
-                        <p>Descripción breve del proyecto.</p>
-                        <div class="reel">
-                            <a href="https://www.ejemplo1.com" target="_blank">
-                                <img src="https://via.placeholder.com/300" alt="Proyecto 1">
-                            </a>
-                        </div>
-                        <!-- Boton 3.3-->
-                    <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Ver más</button>
-                    
-                                  <div class="collapse" id="collapseExample">
-                                    <div class="card card-body">
-                                      Este es un contenido de ejemplo para el componente colapsable. Está oculto por defecto y se muestra cuando se activa.
-                                    </div>
-                                  </div>   
-                                  
-                                  <!-- FIN Boton -->
-                    </div>
-                </div>
-                <!-- FIN Bloque 3  -->
-
-
-                </div>
-              </div>
             </div>
-          </div>
+        </div>
+
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    <span class="circle-number">3</span><span class="titulo-bloques">Proyecto de visores GIS #3</span>
+                </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <!-- Comienzo de Bloque 3 -->
+                    <div class="collapsible">
+                        <!-- Proyecto 3.1 -->
+                        <div class="bloques">
+                            <h2>Proyecto 3.1</h2>
+                            <p>Descripción breve del proyecto.</p>
+                            <div class="reel">
+                                <a href="#" target="_blank">
+                                    <img src="https://via.placeholder.com/300" alt="Proyecto 3.1">
+                                </a>
+                            </div>
+                            <!-- Botón 3.1 -->
+                            <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProyecto31" aria-expanded="false" aria-controls="collapseProyecto31">
+                                Ver más
+                            </button>
+                            <div class="collapse" id="collapseProyecto31">
+                                <div class="card card-body">
+                                    Información detallada sobre el proyecto 3.1
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Proyecto 3.2 -->
+                        <div class="bloques">
+                            <h2>Proyecto 3.2</h2>
+                            <p>Descripción breve del proyecto.</p>
+                            <div class="reel">
+                                <a href="#" target="_blank">
+                                    <img src="https://via.placeholder.com/300" alt="Proyecto 3.2">
+                                </a>
+                            </div>
+                            <!-- Botón 3.2 -->
+                            <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProyecto32" aria-expanded="false" aria-controls="collapseProyecto32">
+                                Ver más
+                            </button>
+                            <div class="collapse" id="collapseProyecto32">
+                                <div class="card card-body">
+                                    Información detallada sobre el proyecto 3.2
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- Proyecto 3.3 -->
+                        <div class="bloques">
+                            <h2>Proyecto 3.3</h2>
+                            <p>Descripción breve del proyecto.</p>
+                            <div class="reel">
+                                <a href="#" target="_blank">
+                                    <img src="https://via.placeholder.com/300" alt="Proyecto 3.3">
+                                </a>
+                            </div>
+                            <!-- Botón 3.3 -->
+                            <button class="collapsible-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProyecto33" aria-expanded="false" aria-controls="collapseProyecto33">
+                                Ver más
+                            </button>
+                            <div class="collapse" id="collapseProyecto33">
+                                <div class="card card-body">
+                                    Información detallada sobre el proyecto 3.3
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FIN Bloque 3 -->
+                </div>
+            </div>
         </div>
     </div>
     <!-- FIN de ACORDEON -->
     
-    
-    
-    
-
-      
     <footer>
-       <b>&nbsp© 2024 Tucuman - IPVDU - Planeamiento - Desarrollo Urbano </b> 
+        <b>&copy; 2024 Tucumán - IPVDU - Planeamiento - Desarrollo Urbano</b> 
     </footer>
 </body>
-
-
-</script>
-
 </html>
